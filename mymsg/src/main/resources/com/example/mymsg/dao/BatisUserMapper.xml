@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<!--namespace:命名空间   指定需要实现的接口->BatisUserMapper-->
+<mapper namespace="com.example.mymsg.dao.BatisUserMapper" >
+  <!--表中的(column)列与对象中的属性(property)一一对应 确定映射关系-->
+  <resultMap id="BaseResultMap" type="com.example.mymsg.entity.BatisUser" >
+    <!--id 主键-->
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="userName" property="userName" jdbcType="VARCHAR" />
+    <result column="passWord" property="passWord" jdbcType="VARCHAR" />
+  </resultMap>
+  <!--声明列名的变量 下面引用-->
+  <sql id="Base_Column_List" >
+    id, userName, passWord
+  </sql>
+  <!--BatisUserMapper接口中方法实现 id方法名 resultMap返回值上面定义(resultType="com.example.mymsg.entity.BatisUser") parameterType参数  -->
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+--    运行的 select语句
+    select 
+    <include refid="Base_Column_List" />
+    from users
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <!--删除方法实现 delete insert update默认返回int-->
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from users
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <!--插入方法实现-->
+  <insert id="insert" parameterType="com.example.mymsg.entity.BatisUser" >
+    insert into users (id, userName, passWord
+      )
+    values (#{id,jdbcType=INTEGER}, #{userName,jdbcType=VARCHAR}, #{passWord,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.mymsg.entity.BatisUser" >
+    insert into users
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="userName != null" >
+        userName,
+      </if>
+      <if test="passWord != null" >
+        passWord,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="userName != null" >
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="passWord != null" >
+        #{passWord,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.mymsg.entity.BatisUser" >
+    update users
+    <set >
+      <if test="userName != null" >
+        userName = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="passWord != null" >
+        passWord = #{passWord,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.mymsg.entity.BatisUser" >
+    update users
+    set userName = #{userName,jdbcType=VARCHAR},
+      passWord = #{passWord,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        ul{display: none}
+    </style>
+    <script src="jq/jquery-3.4.1.js"></script>
+    <script>
+        $(function () {//事件触发函数
+
+        $(".test li:even").css("background-color","#E1251B")
+            .height(35);
+        $(".test li:odd").css("background","aqua")
+            .css("height","80");
+        $("span").bind("click",function () {
+                if($("ul").is(":visible")){
+                    $("ul").hide();
+                } else{
+                    $("ul").show();
+                }
+        });
+        $("span").hover(function () {
+            $("ul").show();
+        },function () {
+            $("ul").hide();
+        });
+
+
+        })
+
+    </script>
+</head>
+<body>
+<span>show</span>
+<ul class="test">
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+    <li>6</li>
+    <li>7</li>
+    <li>8</li>
+    <li>9</li>
+    <li>10</li>
+</ul>
+<div id="test1" style="background-color:aqua">
+    <h5 class="head">点击显示</h5>
+    <div class="content">
+        瞎看
+    </div>
+</div>
+</body>
+</html>

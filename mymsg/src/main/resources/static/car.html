@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div, ul, li {
+            margin: 0;
+            padding: 0
+        }
+
+        li {
+            float: left;
+            width: 100px;
+            height: 24px;
+            line-height: 24px;
+            list-style: none;
+            border: solid 1px;
+            text-align: center;
+        }
+
+        #cart {
+            width: 700px;
+            text-align: center;
+        }
+
+        .num input {
+            width: 30px;
+            text-align: center;
+        }
+
+        ul{
+            background-color: cornflowerblue;
+
+        }
+
+        /*ul:nth-child(0) {*/
+        /*background-color: aqua;*/
+        /*}*/
+
+        .num {
+            width: 150px;
+        }
+
+        #total {
+            clear: both;
+            text-align: right;
+            padding-right: 50px;
+            padding-top: 5px;
+        }
+
+        #total span {
+            color: red
+        }
+    </style>
+    <script src="jq/jquery-3.4.1.js"></script>
+    <script>
+        var pro = ["电脑","u盘","充电器","鼠标"];
+        var price = [10000,23,45,65];
+        //计算总价格
+        function allselect() {
+            var $ones = $("input[name='one']");
+            var flag = 0;
+            $ones.each(function () {
+                if(($(this).prop("checked"))){
+                    flag = flag + 1;
+                }
+            });
+            if(flag == $ones.length && $ones.length != 0){
+                $("input[name='all']").prop("checked",true);
+            } else{
+                $("input[name='all']").prop("checked",false);
+            };
+        };
+        function calctotal() {
+            var sum = 0;
+            // alert($("ul:gt(0)").length);
+            $("ul:gt(0)").each(function () {
+                if($(this).find("input[name='one']").prop("checked")){
+                    sum += parseFloat($(this).find("input[name='num']").val()) *parseFloat($(this).children().eq(2).html());
+
+                }
+            })
+            $("#total span").html(sum);
+        }
+        $(function () {
+            // 选中全部
+            $("input[name='all']").click(function () {
+                var $ul=$("#cart ul:gt(0)");
+                // alert($ul.length);
+                if($ul.length >= 1){
+                    if($(this).prop("checked")){
+                        $("input[name='one']").prop("checked",true);
+                        calctotal();
+                    }else if(!$(this).prop("checked")){
+                        $("input[name='one']").prop("checked",false);
+                        $("#total span").html(0);
+                    }
+                }
+            })
+            //选择确认
+            $("input[name='one']").click(function () {
+                var $total=$("#total span");
+                if($(this).prop("checked")){
+                    calctotal();
+                } else if(!$(this).prop("checked")){
+                    calctotal();
+                }
+                allselect();
+                // var $ones = $("input[name='one']");
+                // var flag = 0;
+                // $ones.each(function () {
+                //     if(($(this).prop("checked"))){
+                //         flag = flag + 1;
+                //     }
+                // });
+                // if(flag == $ones.length){
+                //     $("input[name='all']").prop("checked",true);
+                // } else if(flag == 0){
+                //     $("input[name='all']").prop("checked",false);
+                // };
+            })
+            //添加/减少数量
+            $("ul :button").click(function () {
+                var $lw=$(this).parent().parent().find("input[name='one']");
+                if($(this).val() == "+"){
+                    var $co=parseFloat($(this).parent().children().eq(1).val())+1;
+                    $(this).parent().children().eq(1).val($co);
+                    var $sum=parseFloat($(this).parent().parent().children().eq(2).text())+parseFloat($(this).parent().parent().children().eq(4).text());
+                    $(this).parent().parent().children().eq(4).html($sum);
+                    if($lw.prop("checked")){
+                        calctotal();
+                    };
+                }
+                if($(this).val() == "-"){
+                    if(parseFloat($(this).parent().children().eq(1).val()) <= 1){
+                        $(this).closest("ul").find("span").trigger("click");
+                    }else {
+                        var $co=parseFloat($(this).parent().children().eq(1).val())-1;
+                        $(this).parent().children().eq(1).val($co);
+                        var $sum=parseFloat($(this).parent().parent().children().eq(4).text())-parseFloat($(this).parent().parent().children().eq(2).text());
+                        $(this).parent().parent().children().eq(4).html($sum);
+                        if($lw.prop("checked")){
+                            calctotal();
+                        };
+                    }
+                }
+            })
+            //删除商品
+            $("#cart ul span").click(function () {
+                if(window.confirm("是否删除商品")){
+                    $(this).parent().parent().remove();
+                }
+                // alter()
+                allselect();
+                calctotal();
+            });
+            //添加商品
+            $("input[name='add']").click(function () {
+                // $("#total").before($ul1);
+                var $node=$model.clone(true);
+                //生成0-3随机数->data
+                var i=Math.floor(Math.random()*4);
+                var $ul=$("ul:gt(0)");
+                var flag = true;
+                $ul.each(function () {
+                    if(pro[i] == $(this).children().eq(1).text()){
+                        var numInPut = $(this).find("input[name='num']");
+                        numInPut.val(parseFloat(numInPut.val())+1);
+                        var $sumInPut =$(this).children().eq(4);
+                        $sumInPut.html(parseFloat($sumInPut.text()) + price[i]);
+                        calctotal();
+                        flag = false;
+                        return false;
+                    }
+                });
+                if(flag){
+                    $node.children().eq(1).html(pro[i]);
+                    $node.children().eq(2).html(price[i]);
+                    $node.children().eq(4).html(price[i]);
+                    $("#total").before($node)
+                };
+                if($("input[name='all']").prop("checked")){
+                    $("input[name='one']").prop("checked",true);
+                    calctotal();
+                }
+                //替换
+                //数量++--
+                // $("ul :button").click(function () {
+                //     alert($(this).val());
+                //     if($(this).val() == "+"){
+                //         var $co=parseFloat($(this).parent().children().eq(1).val())+1;
+                //         $(this).parent().children().eq(1).val($co);
+                //     }
+                //     if($(this).val() == "-" && (parseFloat($(this).parent().children().eq(1).val())>0)){
+                //         var $co=parseFloat($(this).parent().children().eq(1).val())-1;
+                //         $(this).parent().children().eq(1).val($co);
+                //     }
+                // })
+            });
+            //删除model
+            var $model=$("#cart ul:eq(1)").detach();
+        })
+    </script>
+</head>
+<body>
+<input type="date">
+<div id="cart">
+    <ul>
+        <li>
+            <input name="all" type="checkbox">全选
+        </li>
+        <li>产品名称</li>
+        <li>价格</li>
+        <li class="num">数量</li>
+        <li>合计</li>
+        <li>操作</li>
+    </ul>
+    <ul>
+        <li><input name="one" type="checkbox"></li>
+        <li>手机</li>
+        <li>1000.00</li>
+        <li class="num">
+            <input type="button" value="-">
+            <input name="num" type="text" value="1">
+            <input type="button" value="+">
+        </li>
+        <li>1000.00</li>
+        <li><span>删除</span></li>
+    </ul>
+
+    <div id="total">总价:<span>0.00</span></div>
+</div>
+<input name="add" type="button" value="添加">
+</body>
+</html>
+
+
+
+
+

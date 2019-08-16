@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jq/jquery-3.4.1.js"></script>
+    <style>
+        .red{
+            color: #c81623;
+        }
+    </style>
+    <script>
+        $(function () {
+            $("input[name='name']").blur(function () {
+                $(this).next(".red").remove();
+                var reg=/^\w{5,15}$/
+                if(!reg.test($(this).val())){
+                    var $erroMsg = $("<span class='red'>用户名不合法</span>");
+                    $(this).after($erroMsg);
+                    // return false;
+                }
+            });
+            $("input[name='pwd']").blur(function () {
+                $(this).next(".red").remove();
+                var reg=/^\w{8,16}$/
+                if(!reg.test($(this).val())){
+                    var $erroMsg = $("<span class='red'>密码不合法</span>");
+                    $(this).after($erroMsg);
+                    // return false;
+                }
+            });
+            $("input[name='ppwwdd']").blur(function () {
+                $(this).next(".red").remove();
+                if($(this).val() != $("input[name='pwd']").val()){
+                    var $erroMsg = $("<span class='red'>密码错误</span>");
+                    $(this).after($erroMsg);
+                    // return false;
+                }
+            });
+            $("input[name='email']").blur(function () {
+                $(this).next(".red").remove();
+                var reg=/^\w+@\w+.[A-Za-z]{2,3}(.[A-Za-z]{2,3})?$/
+                if(!reg.test($(this).val())){
+                    var $erroMsg = $("<span class='red'>邮箱不合法</span>");
+                    $(this).after($erroMsg);
+                    // return false;
+                }
+            });
+            $("input[type='button']").click(function () {
+                $("input[name='name']").trigger("blur");
+                $("input[name='pwd']").trigger("blur");
+                $("input[name='ppwwdd']").trigger("blur");
+                $("input[name='email']").trigger("blur");
+                if($("span.red").length == 0){
+                    $("form").submit();
+                }
+            });
+        })
+    </script>
+</head>
+<body>
+<form>
+    用户名:<input name="name"><br>
+    密码:<input name="pwd" type="password"><br>
+    再次密码:<input name="ppwwdd" type="password"><br>
+    邮箱:<input name="email" type="email"><br>
+    <input type="button" value="提交">
+</form>
+</body>
+</html>

@@ -1,0 +1,414 @@
+body{background-color: #F4F4F4}
+#fiex_box{
+    position: fixed;
+    right: 6px;
+    top: 170px;
+    width: 60px;
+    height: 426px;
+    /*background-color: #E1251B;*/
+}
+.fiex_elevator{
+    width: 60px;
+    height: 60px;
+    margin: 0;
+    float: top;
+    /*background-color: #2F3430;*/
+}
+.elevator_after{
+    width: 60px;
+    height: 1px;
+    margin: 0;
+    float: top;
+    background-color: #F4F4F4;
+}
+.elevator_lk_bg{
+    width: 60px;
+    height: 60px;
+    margin: 0;
+    float: left;
+    /*background-color: blue;*/
+}
+.elevator_lk_txt{
+    width: 28px;
+    height: 38px;
+    color: #333333;
+    float:left;
+    margin: 11px 16px;
+    font: 14px "Microsoft Yi Baiti";
+    /*background-color: #E1251B;*/
+}
+.svg_img{
+    margin: 0 5px;
+}
+.elevator_toptop{
+    margin: 0 4px;
+}
+.elevator_toptop_text {
+    width: 28px;
+    height: 22px;
+    float:left;;
+    color: #E1251B;
+}
+.elevator_toptop_text a{
+    color: #E1251B;
+}
+
+
+#box{height: 170px;width: 100%}
+#box a:hover{color: #E1251B}
+#top{background-color:#E3E4E5;height: 40px;width: 1366px}
+#top1{height: 40px;width: 88%;margin: auto}
+#top2{height: 40px;width: 65%;float: right}
+#top3{height: 40px;width: 35%;float: left}
+#top1 a{width: 58px;height: 30px;line-height: 30px;padding: 0 7px}
+#top3 ul{background-color:black;margin-top: 5px}
+#top3 li{font-size: 20px;float:left;list-style: none;}
+#l2{background-image: url("../images/ad.png");width: 20px;height: 18px;margin-top: 8px}
+#top2 ul{background-color:black;margin-top: 10px}
+#top2 li{font-size: 10px;float:left;list-style: none;line-height:20px;margin-right: 6px;}
+.spacer{background-color: #CCCCCC;width: 1px;height: 10px;margin: 10px 0}
+.link_logo{color: red}
+#top a:hover{color: red}
+#bod{background-color:#FFFFFF;height: 130px;width: 1366px}
+#bodc{height: 130px;width: 88%;margin: auto;}
+/*#top{background-color: black;height: 40px;width: 100%}*/
+#logo{background-image: url("../images/jdlogo.png");height:120px;width:190px;float: left;margin: 5px 5px}
+.search-m{
+    height:35px;
+    width: 1190px;
+    padding: 17px 0 0 0;
+    margin:0 auto;
+}
+.form1{
+    background-color: red;
+    width: 520px;
+    height: 32px;
+    float:left;
+    margin:0 auto;
+}
+.cw-idon{
+    background-image: url("../images/basket.png");
+    width: 130px;
+    height: 34px;
+    float:left;
+    margin-left:20px
+}
+.cw-idon ul{margin-top: -1px}
+.cw-idon li{list-style: none;margin-left:-40px;float:left}
+.cw-idon a{font-size: 12px;float:right;margin-top:11px;margin-left:50px}
+#l1{background-image: url("../images/ball1.png");width: 40px;height: 36px}
+.search{
+    text-align: center;
+}
+.found{
+    width: 440px;
+    height: 21px;
+    float:left;
+}
+.button{width: 70px;height: 29px;float:right;background-image: url("../images/check.png")}
+#hotwords{width: 520px;height:30px;float: left;margin:0}
+#hotwords ul{margin-top: 3px;margin-left:-40px}
+#hotwords li{font-size: 10px;float:left;list-style: none;line-height:20px;margin-right: 10px}
+#navitems{width: 750px;height: 45px;float: left;margin:0}
+#navitems ul{margin:30px 0 0 -45px}
+#navitems li{font-size: 15px;float:left;list-style: none;line-height:10px;margin-right: 20px}
+#prom{width: 180px;height: 130px;float: right;margin-top:-80px;margin-right:60px}
+#prom a{width: 180px;height: 130px;display: block}
+.mobile{width: 80px;height: 80px;float: right;background-image: url("../images/jdew.png")}
+
+#fs{background-color: #F4F4F4;color: #666666;width: 100%;height: 480px;margin:  0 0 20px 0}
+.fs_col1{width: 190px;height: 480px;margin-left: 83px;float: left}
+.cate_menu{background-color: #FEFEFE;width: 180px;height: 470px;margin-top:5px}
+.cate_menu_iteam{list-style: none;font-size: 14px;margin-left:-25px;width:175px;height:26px}
+.fs_col1 a:hover{color: red}
+.cate_menu_lk{color: #333333}
+/*#fs a:hover{color: red}*/
+.fs_col2{width: 790px;height: 480px;float: left;margin-top: -5px}
+.focus-iteam{
+    width: 590px;
+    height: 470px;
+    margin-top:5px;
+    float: left
+}
+
+.focus-iteam img{
+    position: absolute;
+}
+.focus-iteam a{
+    display: block;
+    width:590px;
+    height:470px;
+    /*background-image: url("../images/focus_iteam1.png")*/
+}
+.focus-iteam_recommond{width: 190px;height: 470px;margin-top:5px;float: right}
+.recommond_iteam{width: 190px;height: 150px;float: left;margin:0 0 10px 0}
+.com_it_image{
+    display: block;
+    width:190px;
+    height:150px;
+}
+.fs_col3{background-color: #FEFEFE;width: 200px;height: 480px;float: left;margin-top: -5px}
+.user_inner{width:200px;height: 102px;margin-top: 5px}
+.user_inner_plus{width: 200px;height: 76px;float: top}
+.user_inner_after{width: 200px;height: 1px;float: top;background-color:#F4F4F4}
+.user_avatar{width:44px;height: 44px;float: left;margin: 15px 0 0 15px}
+.user_avatar_lk{display: block;width:43px; height:43px;background-image: url("../images/jddog.png");border-radius: 100px;background-position: 2px 2px}
+.user_show{width: 106px;height: 40px;float: right;margin:15px}
+.user_show p{margin-top: -2px}
+.user_show a:hover{color: red}
+.user_tip{font-size: 12px;color:#666666}
+.user_login{font-size: 12px;color: #333333}
+.user_reg{font-size: 12px;color: #333333}
+
+.user_profit{width: 200px;height: 25px;float: top}
+.user_profit_lk{margin: auto;font-size: 12px;display:block;background:#E1251B;color: #FFFFFF;border-radius: 10px;width: 75px;height: 20px;float: left;margin: 0 12px;padding: 4px 0  0 0}
+.user_profit_plus{font-size:12px;display:block;background:#363634;color: #E5D790;border-radius: 10px;width: 75px;height: 20px;float: left;margin: 0 12px;padding: 4px 0  0 0}
+.user_profit a:hover{background-color: #E1251B;color: #FEFEFE}
+
+.news2{width: 200px;height: 130px;float: top}
+.news2 a:hover{color: #E1251B}
+.news_hd{width: 200px;height: 30px;}
+.new_tile{color: #333333;font: 14px "Microsoft Yi Baiti";width:56px;margin:5px 15px;float:left }
+.news_more{color: #999999;font: 12px "Microsoft Yi Baiti";float: right;margin:5px 20px}
+
+.news_t{width: 170px;height: 100px;margin:0 15px;float: top}
+.news_t a:hover{color: #E1251B}
+.news_list{margin: 0 15px}
+.news_list li{list-style: none;margin: 0 0 0 -50px}
+.new_link{color: #666666;font: 12px "Microsoft Yi Baiti"}
+.news_tag{color:#E1251B;margin-right: 5px;background-color: rgba(225,37,27,0.08)}
+
+
+.service_entry{width: 200px;height: 240px;}
+.service_list{width: 199px;height: 239px;padding: 0;margin-top: 3px}
+.service_li{list-style: none;width: 63px;height: 50px;float: left;margin: 4px 1px}
+.service_lk{
+    display: block;
+    width: 62px;
+    height: 49px;
+    position: relative;
+}
+.service_li a:hover span{color: #E1251B}
+.service_li a:hover img{
+    opacity: 0;
+}
+.service_corner{
+    width: 14px;
+    height: 14px;
+    float: left;
+    margin:0 0 0 44px;
+    background-color: #E1251B;
+    color: #FFFFFF;
+    opacity: 1;
+    position: absolute;
+}
+.service_corner_txt{
+    float: left;
+    margin:-1px 0 0 1px;
+    color: #FFFFFF;
+    font: 12px "Microsoft Yi Baiti";
+}
+
+.service_lk_img{
+    margin:0  0 0 16px;
+    float:left;
+    width: 45.17%;
+    position: absolute;
+}
+.service_lk_img_hover{
+    margin: 0 0 0 16px;
+    float: left;
+    width: 45.17%;
+    position: absolute;
+}
+.service_txt{
+    color: #333333;
+    font: 12px "Microsoft Yi Baiti";
+    float: left;
+    margin:28px 0 0 16px;
+    position: absolute;
+    opacity: 1;
+}
+
+.service_txt_h{
+    float: left;
+    margin:28px 0 0 16px;
+    position: absolute;
+    opacity: 1;
+    color: #E1251B;
+    font: 12px "Microsoft Yi Baiti";
+}
+
+#seckill{width: 100%;height: 260px;margin: 0 0 20px;background-color: #F4F4F4}
+#skill_inner{width: 1190px;height: 260px;margin: 0 79.5px}
+#skill_inner a:hover h6{color: #E1251B}
+#skill_countdown{display: block;width: 190px;height: 260px;float: left;background-color:#E83632}
+.countdown_title{color: #FFFFFF;font: 30px "Microsoft Yi Baiti";width: 190px;height: 45px;margin-top: 31px;background-color: #E83632;float: top;font-weight: bolder}
+.shandian{width: 190px;height: 56px;float: left;margin-top: 10px;}
+.countdown_desc{color: #FFFFFF;width: 190px;height: 26px;font: 14px "Microsoft Yi Baiti";margin-top: 90px;float:top;background-color: #E83632}
+.time_main{width: 130px;height: 30px;background-color:blueviolet;float: left;margin-left: 30px}
+.time_h_m{width: 30px;height: 30px;font-size: 20px;background-color: #2F3430;color: #FFFFFF;float: left}
+.time_after{width: 20px;height: 30px;font-size: 20px;color: #FFFFFF ;background-color: #E83632;float: left}
+.slider{
+    width: 803px;
+    height: 260px;
+    float: left;
+    background-color: #FFFFFF;
+}
+
+.slider_list{
+    width: 803px;
+    height: 260px;
+    background-color:#FFFFFF;
+    float: left;
+}
+.skill_iteam{
+    display: block;
+    width: 200px;
+    height: 260px;
+    float: left;
+    background-color: #FFFFFF;
+}
+.skill_iteam_after{width: 1px;height: 200px;float: left;background-color:#F4F4F4}
+.skill_brand{
+    width: 197px;
+    height: 260px;
+    float: left;
+    overflow: hidden;
+    position: relative;
+    background-color: #FFFFFF;
+}
+
+.skill_image{
+    margin: 29px 29px 0 29px;
+}
+.skill_iteam_name{width: 160px;height: 18px;color: #333333;font: 12px "Microsoft Yi Baiti";margin: 13px 20px 0}
+.skill_iteam_price{width: 160px;height: 24px;background-color: #E1251B;margin: 7px 20px 0}
+.price_miaosha{width: 92px;height: 22px;float: left}
+.price_miaosha i{color: #FFFFFF;padding: 0 2px 0 0;font: 12px "Microsoft Yi Baiti";margin:0 -10px 0 15px}
+.price_miaosha span{color: #FFFFFF;font: 16px "Microsoft Yi Baiti"}
+
+.price_orign{width: 66px;height: 22px;float: left;background-color:#FFFFFF;margin-top: 1px}
+.price_orign i{color: #999999;padding: 0 2px 0 0;font: 12px "Microsoft Yi Baiti";margin:0 -10px 0 10px}
+.price_orign span{color: #999999;font: 12px "Microsoft Yi Baiti"}
+.mi_price{display: block;background-color: #999999;width: 35px;height: 1px;margin:-8px 0 0 20px}
+
+.brand_iteam{
+    display: block;
+    width: 180px;
+    height: 240px;
+    margin:10px 10px;
+    background-color: #FFFFFF;
+}
+.brand_it_image{margin: 20px 26px 0 26px;float: top}
+.inteam_info{
+    width: 180px;
+    height: 86px;
+    float: top;
+    background-color: #E3E4E5;
+}
+.action_a{display: block;width: 20px;height: 20px;float: left}
+
+.brand_info_title{color: #666666;font: 14px "Microsoft Yi Baiti";text-align: center;margin: 0}
+.iteam_info_promo{
+    color: #333333;
+    font: 14px "Microsoft Yi Baiti";
+    text-align: center;
+    margin: 0;
+    font-weight: bolder;
+}
+.iteam_info_action{
+    color:#E1251B;
+    width: 82px;
+    height: 20px;
+    background-color:#E3E4E5;
+    margin: 10px 0 0 50px;
+}
+.iteam_info_action p{margin: 0;font: 12px "Microsoft Yi Baiti";height:20px;width: 82px;float: left;margin: 3px 0 0 8px;margin: 0;text-align: center;border-radius: 10px; border: 1px solid #E1251B;font-weight:bold }
+.iteam_info_action :hover {background-color: #E1251B;color: #F4F4F4;}
+
+.sh{
+    position: relative;
+    opacity: 1;
+    width: 62px;
+    height: 49px;
+    position: relative;
+}
+
+#search_top{
+    display: none;
+    width: 100%;
+    height:80px;
+    float: top;
+    margin: 0 auto;
+    background-color: #FFFFFF;
+}
+.search_a{
+    display: block;
+    background-color: red;
+    width: 125px;
+    height: 35px;
+    float:left;
+    margin:0 80px;
+    background-image: url("../images/search_logo.png");
+
+}
+
+
+
+.myul{
+    width: 360px;
+    height: 240px;
+    float: left;
+    overflow: hidden;
+    position: absolute;
+    top: 5px;
+    margin: 0 0 0 8px;
+    padding: 0;
+}
+
+.myli{
+    width: 180px;
+    height: 240px;
+    float: left;
+    overflow: hidden;
+    position: relative;
+    list-style: none;
+}
+
+.slider_control{
+    opacity: 0.2;
+    margin-top: 100px;
+    display: block;
+    width: 25px;
+    height: 35px;
+    tab-index: -1;
+    background-color: #666666;
+    position: absolute;
+    border-radius: 0 20px 20px 0;
+    border-style: none;
+    padding: 0;
+    float: left;
+}
+
+.slider_control_right{
+    opacity: 0.2;
+    margin:100px 0 0 780px;
+    display: block;
+    width: 25px;
+    height: 35px;
+    tab-index: -1;
+    background-color: #666666;
+    position: absolute;
+    border-radius: 20px 0 0 20px;
+    border-style: none;
+    padding: 0;
+    float:left;
+}
+
+.iconfont{
+    font-size: 20px;
+    width: 25px;
+    height: 35px;
+    color:#FFFFFF;
+}

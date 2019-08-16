@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>留言板</title>
+    <meta charset="UTF-8">
+
+    <style>
+        .error{
+            color: red;
+        }
+        div {
+            margin: 0;
+            padding: 0;
+            font-size: 12px;
+            margin: 0 auto;
+        }
+
+        h3 {
+            text-align: center
+        }
+
+        #container {
+            width: 500px;
+        }
+
+        .article {
+            border: 1px solid #a6cbe7;
+            margin-top: 5px;
+        }
+
+        .author {
+            background-color: #0099FF;
+            width: 100%;
+            height: 24px;
+            line-height: 24px;
+        }
+
+        .content {
+            height: 40px;
+            padding: 10px;
+        }
+
+        .author span {
+            float: right;
+            padding-right: 10px;
+        }
+
+        .time {
+            border-top: solid 1px #a6cbe7;
+        }
+
+        .page {
+            text-align: right;
+            height: 30px;
+            line-height: 30px;
+            padding-right: 10px;
+        }
+    </style>
+    <script>
+        var pageNum=1;
+        var pageCount=0;
+        //根据页数获得评论信息
+        function getPageMsg(page){;
+            $.ajax({
+                url:"http://localhost:8080/pagemsg",
+                type:"post",
+                data:{
+                    "pageNum":page,
+                    "pageSize":4,
+                },
+                dataType:"json",
+                success:function (data) {
+                        // alert(pageNum);
+                        $(".article").remove()
+                        for(var i = 0;i < data.length;i++){
+                            // var $node=$model.clone(true);
+                            // $node.find(".author").html("用户:"+data[i].author+"<span>#"+data[i].id+"</span>");
+                            // $node.find(".content").html(data[i].msg);
+                            // $node.find(".time page").html("发表于:"+data[i].date);
+                            var $node=$("<div class=\"article\"><div class=\"author\">用户:"+data[i].author+"<span>"+data[i].id+"#</span></div> <div class=\"content\">"+data[i].msg+"</div> <div class=\"time page\">发表于:"+data[i].date.substring(0,10)+" "+ data[i].date.substring(11,16)+"</div>");
+                            $("#container").children().eq(1).before($node);
+                        }
+                },
+                error:function (data) {
+                    alert("最后一页");
+                    pageNum=pageNum-1;
+                },
+            })
+        };
+
+        function getPageNum(){
+            $.ajax({
+                url:"http://localhost:8080/getmsgnum",
+                type:"post",
+                dataType:"json",
+                success:function (data) {
+                    pageCount=data;
+                    alert(pageCount);
+                },
+            })
+
+        }
+
+        $(function () {
+            getPageNum();
+            //删除model
+            var $model=$("#container").find(".article").eq(0).detach();
+            //显示第一页最新评论
+            getPageMsg(1);
+            //上下翻页
+            $(".btn1").click(function () {
+                if($(this).val()=="下一页"){
+                    // alert(pageCount);
+                    //获得页数
+                    // alert("下一页");
+                    if(pageNum < pageCount){
+                        alert(pageNum);
+                        pageNum=pageNum+1;
+                        getPageMsg(pageNum);
+                    } else{
+                        alert("最后一页");
+                    }
+
+                };
+                if($(this).val()=="上一页"){
+                    // alert("上一页");
+                    // pageNum > 1?pageNum++:1;
+                    if(pageNum > 1){
+                        pageNum=pageNum-1;
+                        getPageMsg(pageNum);
+                    } else{
+                        alert("第一页");
+                    }
+                };
+
+            });
+            // $.ajax({
+            //     url:"http://localhost:8080/pagemsg",
+            //     type:"post",
+            //     data:{
+            //         "pageNum":pageNum,
+            //         "pageSize":3,
+            //     },
+            //     dataType:"json",
+            //     success:function (data) {
+            //         alert(data.length);
+            //         $(".article").remove();
+            //         for(var i = 0;i < data.length;i++){
+            //             var $node=$model.clone(true);
+            //             $node.find(".author").html("用户:"+data[i].author+"<span>#"+data[i].id+"</span>");
+            //             $node.find(".content").html(data[i].msg);
+            //             $node.find(".time page").html("发表于:"+data[i].date);
+            //             // var $node=$("<div class=\"article\"><div class=\"author\">用户:"+data[i].author+"<span>"+i+"##</span></div> <div class=\"content\">"+data[i].msg+"</div> <div class=\"time page\">发表于:"+data[i].date+"</div>");
+            //             $("#container").children().eq(1).before($node);
+            //         }
+            //     }
+            // })
+            // 添加评论
+            // $("input[type='sumbit']").click(function () {
+            //    
+            // });
+            // 清除留言
+
+            //清除评论内容
+            $("input[type='reset']").click(function () {
+                $("textarea[name='message']").val("");
+            });
+
+            //validate将信息录入库内
+            $("form").validate({
+                rules: {
+                    author: {
+                        required: true,
+                        regex: /^\w{1,10}$/
+                    },
+                    message:{
+                        required: true,
+                        regex: /^\w{1,100}$/
+                    },
+                },
+                messages: {
+                    author: {
+                        required: "请输姓名",
+                        regex: "名字不合法",
+                    },
+                    message:{
+                        required: "请输内容",
+                        regex: "超出字数",
+                    },
+                },
+                submitHandler:function(){
+                    $.ajax({
+                        url:"http://localhost:8080/insert",
+                        type:"post",
+                        data:{
+                            // 'id':$("input[name='id']").val(),
+                            'author':$("input[type='text']").val(),
+                            'msg':$("textarea[name='message']").val()},
+                        dataType:"text",
+                        success:function (data) {
+                                // alert("录入库中");
+                                // location.href="show.html";
+                            getPageNum();
+                            $(".article").remove();
+                            $("input[name='author']").val("");
+                            $("textarea[name='message']").val("");
+                            // $.ajax({
+                            //     url:"http://localhost:8080/pagemsg",
+                            //     type:"post",
+                            //     data:{
+                            //         "pageNum":1,
+                            //         "pageSize":3,
+                            //     },
+                            //     dataType:"json",
+                            //     success:function (data) {
+                            //         for(var i = 0;i <data.length;i++){
+                            //             var $node=$model.clone(true);
+                            //             $node.find(".author").html("用户:"+data[i].author+"<span>#"+data[i].id+"</span>");
+                            //             $node.find(".content").html(data[i].msg);
+                            //             $node.find(".time page").html("发表于:"+data[i].date);
+                            //             // var $node=$("<div class=\"article\"><div class=\"author\">用户:"+data[i].author+"<span>"+i+"##</span></div> <div class=\"content\">"+data[i].msg+"</div> <div class=\"time page\">发表于:"+data[i].date+"</div>");
+                            //             $("#container").children().eq(1).before($node);
+                            //         }
+                            //     }
+                            // })
+                            // 更新留言板
+                            getPageMsg(1);
+
+                        }
+                    })
+                }
+            });
+
+        })
+    </script>
+</head>
+
+<body>
+<div id="container">
+    <div><h3>留言板</h3></div>
+    <div>
+        <div class="article">
+            <div class="author">用户:张三<span>#</span></div>
+            <div class="content">测试一下</div>
+            <div class="time page">发表于:2016-02-09 13:12:23</div>
+        </div>
+        <div class="article">
+            <div class="author">用户:张三<span>12#</span></div>
+            <div class="content">测试一下</div>
+            <div class="time page">发表于:2016-02-09 13:12:23</div>
+        </div>
+    </div>
+
+    <div class="page">
+        <input class="btn1" type="button" value="上一页" onClick="">
+        <input class="btn1" type="button" value="下一页" onClick="">
+    </div><br>
+    <div>
+        <form action="doPost.jsp" method="post">
+            <div>
+                用户: <input type="text" name="author" value=""/>
+            </div><br>
+            <div>
+                留言: <textarea name="message" rows="5" cols="72"></textarea>
+            </div>
+            <div align="center">
+                <input type="reset" value="清除"/>
+                <input type="submit" value="发表"/>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+<script src="js/jquery-3.3.1.js" type="application/javascript"></script>
+<script src="js/jquery.validate.js" type="application/javascript"></script>
+<script src="js/jquery.validate.regex.js" type="application/javascript"></script>
+<script src="js/vue.min.js"></script>
+<script>
+
+</script>
+</html>

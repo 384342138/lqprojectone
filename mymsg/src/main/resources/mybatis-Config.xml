@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<!-- 引用mybatis.properties配置文件 -->
+	<properties resource="mybatis.properties" />
+	
+    <settings>  
+        <setting name="logImpl" value="LOG4J" />    
+    </settings>
+	<!--别名-->
+	<typeAliases>
+		<!--类BatisUser 别名User  在其他xml文件中引用时可替换-->
+		<typeAlias type="com.example.mymsg.entity.BatisUser" alias="User"></typeAlias>
+		<!--包别名-->
+		<!--<package name=""-->
+	</typeAliases>
+	<!-- development : 开发模式 work : 工作模式 -->
+	<environments default="development">
+		<environment id="development">
+			<transactionManager type="JDBC" />
+			<!-- 配置数据库连接信息 -->
+			<dataSource type="UNPOOLED">
+				<!-- value属性值引用db.properties配置文件中配置的值 -->
+				<property name="driver" value="${jdbc.driver}" />
+				<property name="url" value="${jdbc.url}" />
+				<property name="username" value="${jdbc.username}" />
+				<property name="password" value="${jdbc.password}" />
+			</dataSource>
+		</environment>
+	</environments>
+	<!-- 映射文件 -->
+	<mappers>
+		<mapper resource="com\example\mymsg\dao\BatisMsgMapper.xml" />
+		<mapper resource="com\example\mymsg\dao\BatisUserMapper.xml" />
+		<mapper resource="com\example\mymsg\dao\UserDaoImpl.xml" />
+		<mapper resource="com\example\mymsg\dao\MsgDaoImpl.xml" />
+		<mapper resource="com\example\mymsg\dao\StudentMapper.xml" />
+		<mapper resource="com\example\mymsg\dao\TeacherMapper.xml" />
+		<mapper resource="com\example\mymsg\dao\ClassesMapper.xml" />
+
+
+	</mappers>
+</configuration>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.mymsg.dao.MsgDao">
+<select id="getAllMsg" resultType="com.example.mymsg.entity.BatisMsg">
+select * from msgtest;
+</select>
+    <insert id="insertMsg" parameterType="com.example.mymsg.entity.BatisMsg">
+        insert into msgtest(author,msg) values(#{author},#{msg});
+    </insert>
+</mapper>

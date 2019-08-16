@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>XX-黑店商城</title>
+    <link href="css/main.css" rel="stylesheet">
+    <script src="jq/jquery-3.4.1.js"></script>
+    <link href="css/footer.css" rel="stylesheet">
+    <script>
+        $(function () {
+            //
+            setTimeout("changImg()",3000);
+            //轮播
+            var $Ul = $(".myul");
+            var fn = setInterval(autoScroll2, 2500);
+            $Ul.mouseover(function () {
+                clearInterval(fn);
+            }).mouseout(function () {
+                fn = setInterval(autoScroll2, 2500);
+            });
+            function autoScroll2() {
+                $Ul.stop().animate({ left: "-180px" }, 500, function () {
+                    $(this).css({ left: 0 }).find("li:first").appendTo(this);//ul向左移动150，把移出的li放到最后，ul复原。
+                });
+            }
+            //滚动条
+            $(document).scroll(function () {
+                var scro = $(document).scrollTop();
+                if(scro >= 100){
+                    $("#search_top").show().css("position","fixed").css("top","0px");
+                } else{
+                    $("#search_top").hide();
+                }
+            });
+        })
+        var i = -1;
+        var imgs = new Array("test1.jpg","test2.jpg","test3.jpg");
+        // var imgs =document.getElementsByClassName("imagetest");
+        alert(imgs.length)
+        function changImg(){
+            i++;
+            if(i == imgs.length){
+                i = 0;
+            }
+            $(".focus-iteam img").attr("src","images/"+imgs[i]);
+            setTimeout("changImg()",3000);
+        }
+    </script>
+</head>
+<body>
+<a name="top"></a>
+<div id="fiex_box">
+    <div class="fiex_elevator">
+        <span class="elevator_lk_bg">
+            <span class="elevator_lk_txt">京东秒杀</span>
+        </span>
+    </div>
+    <div class="elevator_after"></div>
+    <div class="fiex_elevator">
+        <span class="elevator_lk_bg">
+            <span class="elevator_lk_txt">特色优选</span>
+        </span>
+    </div>
+    <div class="elevator_after"></div>
+    <div class="fiex_elevator">
+        <span class="elevator_lk_bg">
+            <span class="elevator_lk_txt">频道广场</span>
+        </span>
+    </div>
+    <div class="elevator_after"></div>
+    <div class="fiex_elevator">
+        <span class="elevator_lk_bg">
+            <span class="elevator_lk_txt">为你推荐</span>
+        </span>
+    </div>
+    <div class="elevator_after"></div>
+    <div class="fiex_elevator">
+        <span class="elevator_lk_bg">
+            <span class="elevator_lk_txt">
+                <img class="svg_img" src="images/svg1.png">
+                客服
+            </span>
+        </span>
+    </div>
+    <div class="elevator_after"></div>
+    <div class="fiex_elevator">
+        <span class="elevator_lk_bg">
+            <span class="elevator_lk_txt">
+                <img class="svg_img" src="images/svg2.png">
+                反馈
+            </span>
+        </span>
+    </div>
+    <div class="elevator_after"></div>
+    <div class="fiex_elevator">
+        <span class="elevator_lk_bg">
+            <span class="elevator_lk_txt">
+                <img class="elevator_toptop" src="images/svg3.png">
+                <span class="elevator_toptop_text"><a href="#top">顶部</a></span>
+            </span>
+        </span>
+    </div>
+</div>
+<div id="box">
+    <div id="top">
+        <div id="top1">
+            <div id="top3">
+                <ul>
+                    <li id="l2"></li>
+                    <li class=""><a>福建</a></li>
+                </ul>
+            </div>
+            <div id="top2">
+                <ul>
+                    <li><a>您好,请登录</a></li>
+                    <li class="link_logo"><a>免费注册</a></li>
+                    <li class="spacer"></li>
+                    <li><a>我的订单</a></li>
+                    <li class="spacer"></li>
+                    <li><a>我的京东</a></li>
+                    <li class="spacer"></li>
+                    <li><a>京东会员</a></li>
+                    <li class="spacer"></li>
+                    <li class="link_logo"><a>企业采购</a></li>
+                    <li class="spacer"></li>
+                    <li><a>客户服务</a></li>
+                    <li class="spacer"></li>
+                    <li><a>网站导航</a></li>
+                    <li class="spacer"></li>
+                    <li><a>手机京东</a></li>
+                </ul>
+            </div>
+
+    </div>
+    </div>
+    <div id="bod">
+        <div id="bodc">
+            <a id="logo"></a>
+            <div class="search-m">
+                <div class="form1">
+                    <form  >
+                        <table>
+                            <tr>
+                                <td class="search">
+                                    <input class="found" name="found" type="text">
+                                    <input class="button"  type="button" style="border: red">
+                                </td>
+                            </tr>
+                        </table>
+                    </form>
+                </div>
+                <div class="cw-idon">
+                       <ul>
+                           <li><a class="link_logo">我的购物车</a></li>
+                       </ul>
+                </div>
+            </div>
+            <div id="hotwords">
+                <ul>
+                    <li><a class="link_logo">神迹</a></li>
+                    <li><a>正品好药</a></li>
+                    <li><a>空调钜惠</a></li>
+                    <li><a>开关五折</a></li>
+                    <li><a>美妆新品</a></li>
+                    <li><a>鞋靴清仓</a></li>
+                    <li><a>每100-50</a></li>
+                    <li><a>纸品生活</a></li>
+                    <li><a>养殖消毒</a></li>
+
+                </ul>
+            </div>
+            <div id="navitems">
+                <ul>
+                    <li><a class="link_logo">秒杀</a></li>
+                    <li><a class="link_logo">优惠券</a></li>
+                    <li><a>PLUS会员</a></li>
+                    <li><a>品牌闪购</a></li>
+                    <li><a>拍卖</a></li>
+                    <li><a>京东时尚</a></li>
+                    <li><a>京东超市</a></li>
+                    <li><a>京东生鲜</a></li>
+                    <li><a>海囤全球</a></li>
+                    <li><a>京东金融</a></li>
+                </ul>
+            </div>
+            <div id="prom">
+                <a>
+                    <div class="mobile"></div>
+                </a>
+            </div>
+
+        </div>
+
+
+    </div>
+</div>
+<div id="fs">
+    <div class="fs_col1">
+        <ul class="cate_menu">
+            <a href="">
+                <li class="cate_menu_iteam">
+                    <a class="cate_menu_lk">家用电器</a>
+                </li>
+            </a>
+            <a href="">
+                <li class="cate_menu_iteam">
+                    <a class="cate_menu_lk">手机</a>
+                    <span class="cate_menu_line">/</span>
+                    <a class="cate_menu_lk">运营商</a>
+                    <span class="cate_menu_line">/</span>
+                    <a class="cate_menu_lk">数码</a>
+                </li>
+            </a>
+            <a href="">
+                <li class="cate_menu_iteam">
+                    <a class="cate_menu_lk">电脑</a>
+                    <span class="cate_menu_line">/</span>
+                    <a class="cate_menu_lk">办公</a>
+                </li>
+
+            </a>
+            <a href="">
+                <li class="cate_menu_iteam">
+                    <a class="cate_menu_lk">家居</a>
+                    <span class="cate_menu_line">/</span>
+                    <a class="cate_menu_lk">家具</a>
+                    <span class="cate_menu_line">/</span>
+                    <a class="cate_menu_lk"></a>家装
+                    <span class="cate_menu_line">/</span>
+                    <a class="cate_menu_lk">厨具</a>
+                </li>
+            </a>
+            <a href="">
+                <li class="cate_menu_iteam">
+                    <a class="cate_menu_lk">男装</a>
+                    <span class="cate_menu_line">/</span>
+                    <a class="cate_menu_lk">女装</a>
+                    <span class="cate_menu_line">/</span>
+                    <a class="cate_menu_lk">童装</a>
+                    <span class="cate_menu_line">/</span>
+                    <a class="cate_menu_lk">内衣</a>
+                </li>
+            </a>
+            <a href="">
+                <li class="cate_menu_iteam">
+                    <a class="cate_menu_lk">美妆</a>
+                    <span class="cate_menu_line">/</span>
+                    <a class="cate_menu_lk">个护清洗</a>
+                    <span class="cate_menu_line">/</span>
+                    <a class="cate_menu_lk">宠物</a>
+                </li>
+            </a>
+            <a href="">
+                <li class="cate_menu_iteam">
+                    <a class="cate_menu_lk">女鞋</a>
+                    <span class="cate_menu_line">/</span>
+                    <a class="cate_menu_lk">箱包</a>
+                    <span class="cate_menu_line">/</span>
+                    <a class="cate_menu_lk">钟表</a>
+                    <span class="cate_menu_line">/</span>
+                    <a class="cate_menu_lk">珠宝</a>
+                </li>
+            </a>
+            <a href="">
+                <li class="cate_menu_iteam">
+                    <a class="cate_menu_lk">男鞋</a>
+                    <span class="cate_menu_line">/</span>
+                    <a class="cate_menu_lk">运动</a>
+                    <span class="cate_menu_line">/</span>
+                    <a class="cate_menu_lk">户外</a>
+                </li>
+            </a>
+            <a href="">
+                <li class="cate_menu_iteam">
+                    <a class="cate_menu_lk">房产</a>
+                    <span class="cate_menu_line">/</span>
+                    <a class="cate_menu_lk">汽车</a>
+                    <span class="cate_menu_line">/</span>
+                    <a class="cate_menu_lk">汽车用品</a>
+                </li>
+            </a>
+            <a href="">
+                <li class="cate_menu_iteam">
+                    <a class="cate_menu_lk">母婴</a>
+                    <span class="cate_menu_line">/</span>
+                    <a class="cate_menu_lk">玩具乐器</a>
+                </li>
+
+            </a>
+            <a href="">
+                <li class="cate_menu_iteam">
+                    <a class="cate_menu_lk">食品</a>
+                    <span class="cate_menu_line">/</span>
+                    <a class="cate_menu_lk">酒类</a>
+                    <span class="cate_menu_line">/</span>
+                    <a class="cate_menu_lk">生鲜</a>
+                    <span class="cate_menu_line">/</span>
+                    <a class="cate_menu_lk">特产</a>
+                </li>
+            </a>
+            <a href="">
+                <li class="cate_menu_iteam">
+                    <a class="cate_menu_lk">艺术</a>
+                    <span class="cate_menu_line">/</span>
+                    <a class="cate_menu_lk">礼品鲜花</a>
+                    <span class="cate_menu_line">/</span>
+                    <a class="cate_menu_lk">农资绿植</a>
+                    <span class="cate_menu_line">/</span>
+                </li>
+            </a>
+            <a href="">
+                <li class="cate_menu_iteam">
+                    <a class="cate_menu_lk">医药保健</a>
+                    <span class="cate_menu_line">/</span>
+                    <a class="cate_menu_lk">计生情趣</a>
+                </li>
+            </a>
+            <a href="">
+                <li class="cate_menu_iteam">
+                    <a class="cate_menu_lk">图书</a>
+                    <span class="cate_menu_line">/</span>
+                    <a class="cate_menu_lk">文娱</a>
+                    <span class="cate_menu_line">/</span>
+                    <a class="cate_menu_lk">电子书</a>
+                </li>
+            </a>
+            <a href="">
+                <li class="cate_menu_iteam">
+                    <a class="cate_menu_lk">机票</a>
+                    <span class="cate_menu_line">/</span>
+                    <a class="cate_menu_lk">酒店</a>
+                    <span class="cate_menu_line">/</span>
+                    <a class="cate_menu_lk">旅游</a>
+                    <span class="cate_menu_line">/</span>
+                    <a class="cate_menu_lk">生活</a>
+                </li>
+            </a>
+            <a href="">
+                <li class="cate_menu_iteam">
+                    <a class="cate_menu_lk">理财</a>
+                    <span class="cate_menu_line">/</span>
+                    <a class="cate_menu_lk">众筹</a>
+                    <span class="cate_menu_line">/</span>
+                    <a class="cate_menu_lk">白条</a>
+                    <span class="cate_menu_line">/</span>
+                    <a class="cate_menu_lk">保险</a>
+                </li>
+            </a>
+            <a href="">
+                <li class="cate_menu_iteam">
+                    <a class="cate_menu_lk">安装</a>
+                    <span class="cate_menu_line">/</span>
+                    <a class="cate_menu_lk">维修</a>
+                    <span class="cate_menu_line">/</span>
+                    <a class="cate_menu_lk">清洗</a>
+                    <span class="cate_menu_line">/</span>
+                    <a class="cate_menu_lk">二手</a>
+                </li>
+            </a>
+            <a href="">
+                <li class="cate_menu_iteam">
+                    <a class="cate_menu_lk">工业品</a>
+                </li>
+            </a>
+        </ul>
+    </div>
+    <div class="fs_col2">
+        <div class="focus-iteam">
+            <a href="">
+                <img src="images/focus_iteam1.png">
+                <!--<img class="imagetest"  src="images/test1.jpg">-->
+                <!--<img class="imagetest"  src="images/test2.jpg">-->
+                <!--<img class="imagetest" src="images/test3.jpg">-->
+            </a>
+        </div>
+        <div class="focus-iteam_recommond">
+            <div class="recommond_iteam">
+                <a class="com_it_image" href="">
+                    <img src="images/com_it_image1.png">
+                </a>
+            </div>
+            <div class="recommond_iteam">
+                <a class="com_it_image" href="">
+                    <img src="images/com_it_image2.png">
+                </a>
+            </div>
+            <div class="recommond_iteam">
+                <a class="com_it_image" href="">
+                    <img src="images/com_it_image3.png">
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="fs_col3">
+        <div class="user_inner">
+            <div class="user_inner_plus">
+                <div class="user_avatar">
+                    <a class="user_avatar_lk"></a>
+                </div>
+                <div class="user_show">
+                    <a class="user_tip">Hi 欢迎逛京东！</a>
+                    <p>
+                        <a class="user_login">登录</a>
+                        &nbsp;|&nbsp;
+                        <a class="user_reg">注册</a>
+                    </p>
+                </div>
+            </div>
+            <div class="user_profit">
+                <a class="user_profit_lk">&nbsp;&nbsp;&nbsp;&nbsp;新人福利</a>
+                <a class="user_profit_plus">&nbsp;&nbsp;&nbsp;&nbsp;PLUS会员</a>
+            </div>
+        </div>
+        <div class="user_inner_after"></div>
+        <div class="news2">
+            <div class="news_hd">
+                <h5 class="new_tile">京东快报</h5>
+                <a class="news_more">更多
+                    <i class="iconfont">></i>
+                </a>
+            </div>
+            <div class="news_t">
+                <ul class="news_list">
+                    <li>
+                        <a class="new_link">
+                            <span class="news_tag">推荐</span>
+                            华为麒麟990新突破...
+                        </a>
+                    </li>
+                    <li>
+                        <a class="new_link">
+                            <span class="news_tag">最新</span>
+                            小米10：骁龙865+...
+                        </a>
+                    </li>
+                    <li>
+                        <a class="new_link">
+                            <span class="news_tag">热门</span>
+                            iPhone 11国行售价...
+                        </a>
+                    </li>
+                    <li>
+                        <a class="new_link">
+                            <span class="news_tag">热门</span>
+                            首批鸿蒙系统测试...
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+        <div class="user_inner_after"></div>
+        <div class="service_entry">
+            <ul class="service_list">
+                <li class="service_li">
+                    <div class="sh">
+                        <img class="service_lk_img_hover" src="images/phone_h.png">
+                        <span class="service_txt_h">话费</span>
+                        <a class="service_lk">
+                            <img class="service_lk_img" src="images/phone1.png">
+                            <span class="service_txt">话费</span>
+                        </a>
+                    </div>
+                </li>
+                <li class="service_li">
+                    <div class="sh">
+                        <img class="service_lk_img_hover" src="images/feiji_h.png">
+                        <span class="service_txt_h">机票</span>
+                        <a class="service_lk">
+                            <img class="service_lk_img" src="images/feiji1.png">
+                            <span class="service_txt">机票</span>
+                        </a>
+                    </div>
+                </li>
+                <li class="service_li">
+                    <div class="sh">
+                        <img class="service_lk_img_hover" src="images/jiudain_h.png">
+                        <span class="service_txt_h">酒店</span>
+                        <a class="service_lk">
+                            <img class="service_lk_img" src="images/jiudian1.png">
+                            <span class="service_txt">酒店</span>
+                        </a>
+                    </div>
+                </li>
+                <li class="service_li">
+                    <div class="sh">
+                        <img class="service_lk_img_hover" src="images/youxi_h.png">
+                        <span class="service_txt_h">游戏</span>
+                        <a class="service_lk">
+                            <img class="service_lk_img" src="images/youxi1.png">
+                            <span class="service_txt">游戏</span>
+                        </a>
+                    </div>
+                </li>
+                <li class="service_li">
+                    <div class="sh">
+                        <img class="service_lk_img_hover" src="images/jiayouka_h.png">
+                        <span class="service_corner">
+                            <i class="service_corner_txt">惠</i>
+                        </span>
+                        <span class="service_txt_h">加油卡</span>
+                        <a class="service_lk">
+                        <span class="service_corner">
+                            <i class="service_corner_txt">惠</i>
+                        </span>
+                            <img class="service_lk_img" src="images/jiayouka1.png">
+                            <span class="service_txt">加油卡</span>
+                        </a>
+                    </div>
+                </li>
+                <li class="service_li">
+                    <div class="sh">
+                        <img class="service_lk_img_hover" src="images/huochepiao_h.png">
+                        <span class="service_txt_h">火车票</span>
+                        <a class="service_lk">
+                            <img class="service_lk_img" src="images/huochepiao1.png">
+                            <span class="service_txt">火车票</span>
+                        </a>
+                    </div>
+                </li>
+                <li class="service_li">
+                    <div class="sh">
+                        <img class="service_lk_img_hover" src="images/zhongchou_h.png">
+                        <span class="service_txt_h">众筹</span>
+                        <a class="service_lk">
+                            <img class="service_lk_img" src="images/zhongchou1.png">
+                            <span class="service_txt">众筹</span>
+                        </a>
+                    </div>
+                </li>
+                <li class="service_li">
+                    <div class="sh">
+                        <img class="service_lk_img_hover" src="images/licai_h.png">
+                        <span class="service_txt_h">理财</span>
+                        <a class="service_lk">
+                            <img class="service_lk_img" src="images/licai1.png">
+                            <span class="service_txt">理财</span>
+                        </a>
+                    </div>
+                </li>
+                <li class="service_li">
+                    <div class="sh">
+                        <img class="service_lk_img_hover" src="images/baitiao_h.png">
+                        <span class="service_txt_h">白条</span>
+                        <a class="service_lk">
+                            <img class="service_lk_img" src="images/baitiao1.png">
+                            <span class="service_txt">白条</span>
+                        </a>
+                    </div>
+                </li>
+                <li class="service_li">
+                    <div class="sh">
+                        <img class="service_lk_img_hover" src="images/dianyingpiao_h.png">
+                        <span class="service_corner">
+                            <i class="service_corner_txt">热</i>
+                        </span>
+                        <span class="service_txt_h">电影票</span>
+                        <a class="service_lk">
+                        <span class="service_corner">
+                            <i class="service_corner_txt">热</i>
+                        </span>
+                            <img class="service_lk_img" src="images/dianyingpiao1.png">
+                            <span class="service_txt">电影票</span>
+                        </a>
+                    </div>
+                </li>
+                <li class="service_li">
+                    <div class="sh">
+                        <img class="service_lk_img_hover" src="images/qiyegou_h.png">
+                        <span class="service_txt_h">企业购</span>
+                        <a class="service_lk">
+                            <img class="service_lk_img" src="images/qiyegou1.png">
+                            <span class="service_txt">企业购</span>
+                        </a>
+                    </div>
+                </li>
+                <li class="service_li">
+                    <div class="sh">
+                        <img class="service_lk_img_hover" src="images/lipinka_h.png">
+                        <span class="service_txt_h">礼品卡</span>
+                        <a class="service_lk">
+                            <img class="service_lk_img" src="images/lipinka1.png">
+                            <span class="service_txt">礼品卡</span>
+                        </a>
+                    </div>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</div>
+<div id="seckill">
+    <div id="skill_inner">
+        <a id="skill_countdown">
+            <div class="countdown_title">&nbsp;&nbsp;&nbsp;京东秒杀</div>
+            <img class="shandian" src="images/shandian.png">
+            <div class="countdown_desc">
+                <strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;12:00</strong>
+                点场 倒计时
+            </div>
+            <span class="time_main">
+                <span class="time_h_m">00</span>
+                <span class="time_after">:</span>
+                <span class="time_h_m">50</span>
+                <span class="time_after">:</span>
+                <span class="time_h_m">49</span>
+            </span>
+        </a>
+            <div class="slider">
+                <button class="slider_control">
+                    <i class="iconfont"> < </i>
+                </button>
+                <div class="slider_list">
+                    <a class="skill_iteam">
+                        <img class="skill_image" src="images/kill1.jpg">
+                        <h6 class="skill_iteam_name">全球购阿玛尼ARMANI男装..</h6>
+                        <div class="skill_iteam_price">
+                    <span class="price_miaosha">
+                        <i>￥</i>
+                        <span>359.00</span>
+                    </span>
+                            <span class="price_orign">
+                        <i>￥</i>
+                        <span>
+                            590.00
+                            <span class="mi_price"></span>
+                        </span>
+                    </span>
+                        </div>
+                    </a>
+                    <div class="skill_iteam_after"></div>
+                    <a class="skill_iteam">
+                        <img class="skill_image" src="images/skill2.png">
+                        <h6 class="skill_iteam_name">OJJ X1智能锁鹿客指纹防盗...</h6>
+                        <div class="skill_iteam_price">
+                    <span class="price_miaosha">
+                        <i>￥</i>
+                        <span>11.80</span>
+                    </span>
+                            <span class="price_orign">
+                        <i>￥</i>
+                        <span>
+                            15.80
+                            <span class="mi_price"></span>
+                        </span>
+                    </span>
+                        </div>
+                    </a>
+                    <div class="skill_iteam_after"></div>
+                    <a class="skill_iteam">
+                        <img class="skill_image" src="images/skill3.jpg">
+                        <h6 class="skill_iteam_name">商务笔记本文具a5本子日记...</h6>
+                        <div class="skill_iteam_price">
+                    <span class="price_miaosha">
+                        <i>￥</i>
+                        <span>999.00</span>
+                    </span>
+                            <span class="price_orign">
+                        <i>￥</i>
+                        <span>
+                            1699.00
+                            <span class="mi_price"></span>
+                        </span>
+                    </span>
+                        </div>
+                    </a>
+                    <div class="skill_iteam_after"></div>
+                    <a class="skill_iteam">
+                        <img class="skill_image" src="images/skill4.jpg">
+                        <h6 class="skill_iteam_name">香山 0.1克高精准电子秤厨...</h6>
+                        <div class="skill_iteam_price">
+                    <span class="price_miaosha">
+                        <i>￥</i>
+                        <span>48.00</span>
+                    </span>
+                            <span class="price_orign">
+                        <i>￥</i>
+                        <span>
+                            59.00
+                            <span class="mi_price"></span>
+                        </span>
+                    </span>
+                        </div>
+                    </a>
+                </div>
+                <button class="slider_control_right">
+                    <i class="iconfont"> > </i>
+                </button>
+            </div>
+            <div class="skill_brand">
+                <ul class="myul">
+                    <li class="myli">
+                        <a class="brand_iteam">
+                            <img class="brand_it_image" src="images/brandimage1.jpg">
+                            <div class="inteam_info">
+                                <!--<a class="action_a">nihao</a>-->
+                                <p class="brand_info_title">雅琪银器专场</p>
+                                <p class="iteam_info_promo">满339减100</p>
+                                <div class="iteam_info_action">
+                                    <p>品类秒杀></p>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="myli">
+                        <a class="brand_iteam">
+                            <img class="brand_it_image" src="images/brandimag2.jpg">
+                            <div class="inteam_info">
+                                <!--<a class="action_a">nihao</a>-->
+                                <p class="brand_info_title">影像秒杀专场</p>
+                                <p class="iteam_info_promo">佳能爆款直降2千</p>
+                                <div class="iteam_info_action">
+                                    <p>品类秒杀></p>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+    </div>
+</div>
+<div id="footer">
+    <div id="service-2014">
+        <div class="slogan">
+            <img src="images/service_items_1.png">
+            <img src="images/service_items_2.png">
+            <img src="images/service_items_3.png">
+            <img src="images/service_items_4.png">
+        </div>
+        <div class="w">
+            <dl class="fore1">
+                <dt>购物指南</dt>
+                <dd>
+                    <div><a>购物流程</a>
+                    </div>
+                    <div><a>会员介绍</a>
+                    </div>
+                    <div><a>生活旅行/团购</a>
+                    </div>
+                    <div><a>常见问题</a></div>
+                    <div><a>大家电</a>
+                    </div>
+                    <div><a>联系客服</a></div>
+                </dd>
+            </dl>
+            <dl class="fore2">
+                <dt>配送方式</dt>
+                <dd>
+                    <div><a>上门自提</a>
+                    </div>
+                    <div><a>211限时达</a>
+                    </div>
+                    <div><a>配送服务查询</a>
+                    </div>
+                    <div><a>配送费收取标准</a>
+                    </div>
+                    <div><a>海外配送</a></div>
+                </dd>
+            </dl>
+            <dl class="fore3">
+                <dt>支付方式</dt>
+                <dd>
+                    <div><a>货到付款</a>
+                    </div>
+                    <div><a>在线支付</a>
+                    </div>
+                    <div><a>分期付款</a>
+                    </div>
+                    <div><a>邮局汇款</a>
+                    </div>
+                    <div><a>公司转账</a>
+                    </div>
+                </dd>
+            </dl>
+            <dl class="fore4">
+                <dt>售后服务</dt>
+                <dd>
+                    <div><a>售后政策</a>
+                    </div>
+                    <div><a>价格保护</a>
+                    </div>
+                    <div><a>退款说明</a>
+                    </div>
+                    <div><a>返修/退换货</a>
+                    </div>
+                    <div><a>取消订单</a>
+                    </div>
+                </dd>
+            </dl>
+            <dl class="fore5">
+                <dt>特色服务</dt>
+                <dd>
+                    <div><a >夺宝岛</a></div>
+                    <div><a >DIY装机</a></div>
+                    <div><a >延保服务</a></div>
+                    <div><a >京东E卡</a></div>
+                    <div><a >京东通信</a></div>
+                    <div><a >京东JD+</a></div>
+                </dd>
+            </dl>
+            <div id="coverage">
+                <div class="dt">
+                    京东自营覆盖区县
+                </div>
+                <div class="dd">
+                    <p>京东已向全国2649个区县提供自营配送服务，支持货到付款、POS机刷卡和售后上门服务。</p>
+                    <p class="ar"><a>查看详情&nbsp;&gt;</a>
+                    </p>
+                </div>
+            </div>
+            <span class="clr"></span>
+        </div>
+    </div>
+    <div class="copyright">
+        <a target="_blank" href=""><img src="images/ga.png"> 京公网安备11000002000088号</a>&nbsp;&nbsp;|&nbsp;&nbsp;京ICP证070359号&nbsp;&nbsp;|&nbsp;&nbsp;
+        <a target="_blank" href="">互联网药品信息服务资格证编号(京)-经营性-2014-0008</a>&nbsp;&nbsp;|&nbsp;&nbsp;新出发京零&nbsp;字第大120007号<br>互联网出版许可证编号新出网证(京)字150号&nbsp;&nbsp;|&nbsp;&nbsp;
+        <a href="" target="_blank">出版物经营许可证</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="" target="_blank">网络文化经营许可证京网文[2014]2148-348号</a>&nbsp;&nbsp;|&nbsp;&nbsp;违法和不良信息举报电话：4006561155<br>Copyright&nbsp;©&nbsp;2004&nbsp;-&nbsp;2016&nbsp;&nbsp;京东JD.com&nbsp;版权所有&nbsp;&nbsp;|&nbsp;&nbsp;消费者维权热线：4006067733<br>京东旗下网站：<a href="" target="_blank">京东钱包</a>
+    </div>
+</div>
+
+<div id="search_top">
+    <div class="search-m">
+        <a class="search_a"></a>
+        <div class="form1">
+            <form>
+                <table>
+                    <tr>
+                        <td class="search">
+                            <input class="found" name="found" type="text">
+                            <input class="button"  type="button" style="border: red">
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+        <div class="cw-idon">
+            <ul>
+                <li><a class="link_logo">我的购物车</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+</body>
+</html>

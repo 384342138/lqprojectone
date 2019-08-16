@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div, ul, li {
+            margin: 0;
+            padding: 0
+        }
+
+        li {
+            float: left;
+            width: 100px;
+            height: 24px;
+            line-height: 24px;
+            list-style: none;
+            border: solid 1px;
+            text-align: center;
+        }
+
+        #cart {
+            width: 700px;
+            text-align: center;
+        }
+
+        .num input {
+            width: 30px;
+            text-align: center;
+        }
+
+        ul {
+            background-color: cornflowerblue;
+
+        }
+
+        /*ul:nth-child(0) {*/
+        /*background-color: aqua;*/
+        /*}*/
+
+        .num {
+            width: 150px;
+        }
+
+        #total {
+            clear: both;
+            text-align: right;
+            padding-right: 50px;
+            padding-top: 5px;
+        }
+
+        #total span {
+            color: red
+        }
+    </style>
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script>
+        var pro = ["电脑", "u盘", "充电器", "鼠标"];
+        var price = [10000, 23, 45, 65];
+        $(function () {
+            //添加产品
+            $("input[name='add']").click(function () {
+                var $node = $model.clone(true);
+                //生成随机数0-3 -> data
+                var i = Math.floor(Math.random() * 4);
+                //判断该产品是否存在，如果存在，数量+1（高级）
+                //1 获得当前存在的li -> 存在哪些商品
+                var $uls = $("ul:gt(0)");
+                //2 循环对比 ？数量加一 ：添加新记录
+                var flag = -1;
+                $uls.each(function (index) {
+                    if($(this).children(":eq(1)").text() == pro[i]){
+                        flag = index;
+                        return false;
+                    }
+                });
+                if (flag > -1) {
+                    //数量加一
+                    var numInput = $uls.eq(flag).find("input[name='num']");
+                    numInput.val(parseInt(numInput.val())+1);
+                } else {
+                    //使用data替换，如何得到124li
+                    $node.children().eq(1).html(pro[i]);
+                    $node.children().eq(2).html(price[i]);
+                    $node.children().eq(4).html(price[i]);
+                    //添加新纪录，节点添加到指定位置。
+                    $("#total").before($node);
+                }
+                $("input[name='num']").trigger("input");
+            });
+
+            //添加数量
+            $("input[value='+']").click(function () {
+                $(this).prev().val(parseInt($(this).prev().val()) + 1);
+                $("input[name='num']").trigger("input");
+            });
+
+            //减少数量
+            $("input[value='-']").click(function () {
+                var num = parseInt($(this).next().val());
+                if (num > 1){
+                    $(this).next().val(num - 1);
+                    $("input[name='num']").trigger("input");
+                } else
+                    $(this).closest("ul").find("span").click();
+            });
+
+            //删除产品
+            $("#cart ul span").click(function () {
+                if (window.confirm("是否删除该产品？")){
+                    $(this).closest("ul").remove();
+                    calcTotal();
+                }
+            });
+
+            //全选
+            $("input[name='all']").click(function () {
+                if($(this).is(":checked")){
+                    $("input[name='one']").prop("checked",true);
+                }else {
+                    $("input[name='one']").prop("checked",false);
+                }
+                calcTotal();
+            });
+
+            //合计值
+            $("input[name='num']").bind('input',function () {
+                var num = $(this).val() == ''? 0 : parseInt($(this).val());
+                $(this).parent().next().text(parseInt($(this).parent().prev().text()) * num);
+                calcTotal();
+            });
+
+            //勾选合计
+            $("input[name='one']").click(function () {
+                calcTotal();
+            });
+
+            //删除model
+            var $model = $("#cart ul:eq(1)").detach();
+
+
+
+            var reg = /^(\d{3}|\d{4})-\d{8}$/;
+            alert(reg.test("01969-77777799"));
+
+
+
+
+
+        });
+        //计算总价格
+        function calcTotal() {
+            var sum = 0;
+            $("ul:gt(0)").each(function () {
+                if($(this).find("input[name='one']").is(':checked'))
+                    sum += parseInt($(this).children().eq(4).text());//计算
+            });
+            $("#total span").text(sum);
+        }
+    </script>
+</head>
+<body>
+<input type="date">
+<div id="cart">
+    <ul>
+        <li><input name="all" type="checkbox">全选</li>
+        <li>产品名称</li>
+        <li>价格</li>
+        <li class="num">数量</li>
+        <li>合计</li>
+        <li>操作</li>
+    </ul>
+    <ul>
+        <li><input name="one" type="checkbox"></li>
+        <li>手机</li>
+        <li>1000.00</li>
+        <li class="num"><input type="button" value="-"> <input name="num" type="text" value="1"> <input type="button"
+                                                                                                        value="+"></li>
+        <li>1000.00</li>
+        <li><span>删除</span></li>
+    </ul>
+
+    <div id="total">总价:<span>0.00</span></div>
+</div>
+<input name="add" type="button" value="添加">
+</body>
+<script src="js/vue.min.js"></script>
+</html>

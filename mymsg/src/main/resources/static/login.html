@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!--<script src="js/jquery-3.4.1.js"></script>-->
+    <script src="js/jquery-3.3.1.js" type="application/javascript"></script>
+    <script src="js/jquery.validate.js" type="application/javascript"></script>
+    <script src="js/jquery.validate.regex.js" type="application/javascript"></script>
+    <!--<script src="js/layer.js" type="application/javascript"></script>-->
+    <style>
+        .error{
+            color: red;
+        }
+    </style>
+    <script>
+        $("#myForm").validate({
+                rules: {
+                    userName: {
+                        required: true,
+                        regex: /^\w{3,20}$/
+                    },
+                    passWord: {
+                        required: true,
+                        regex:/^\w{3,16}$/
+                    }
+                },
+                messages: {
+                    userName: {
+                        required: "请输入姓名",
+                        regex: "用户名格式不正确"
+                    },
+                    passWord: {
+                        required: "请输入密码",
+                        regex: "请输入正确格式的password"
+                    }
+                },
+                submitHandler:function(){
+                    $.ajax({
+                        url:"http://localhost:8080/check",
+                        type:"post",
+                        data:{
+                            // 'id':$("input[name='id']").val(),
+                            'userName':$("input[name='userName']").val(),
+                            'passWord':$("input[name='passWord']").val()},
+                        dataType:"text",
+                        success:function (data) {
+                            if(data == 'true'){
+                                location.href="show.html";
+                            } else {
+                                // $("#errorMsg").html("用户密码输入错误！");
+                                alert("用户名或密码错误");
+                            }
+                        }
+                    })
+                }
+            });
+        // var vm =new Vue({
+        //         el:"#myForm",
+        //         data:{
+        //             userName:"aaa",
+        //             passWord:"bbb",
+        //         }
+        //     })
+    </script>
+</head>
+<body>
+<form id="myForm" action="">
+    <!--用户id:<input name="id" type="number"><br>-->
+    用户名:<input name="userName" type="text"><br>
+    密码:<input name="passWord" type="password" value=""><span id="#errorMsg"></span><br>
+    <input type="submit" value="提交">
+</form>
+
+
+</body>
+</html>

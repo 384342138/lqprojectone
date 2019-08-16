@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.mymsg.dao.TeacherMapper" >
+  <resultMap id="ClassesResultMap" type="com.example.mymsg.entity.Classes" >
+    <id column="cId" property="cId" jdbcType="INTEGER" />
+    <result column="CName" property="CName" jdbcType="VARCHAR" />
+    <!--<result column="tId" property="tId" jdbcType="INTEGER" />-->
+
+  </resultMap>
+  <resultMap id="TeacherResultMap" type="com.example.mymsg.entity.Teacher" >
+    <id column="tId" property="tId" jdbcType="INTEGER" />
+    <result column="tName" property="tName" jdbcType="VARCHAR" />
+    <collection property="classesSet" resultMap="ClassesResultMap"></collection>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    tId, tName
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="TeacherResultMap" parameterType="java.lang.Integer" >
+    select *
+    from teacher t,classes c,teacher_class tc where tc.teacherId=t.tId and tc.classId=c.cId and t.tId = #{tId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from teacher
+    where tId = #{tId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.example.mymsg.entity.Teacher" >
+    insert into teacher (tId, tName)
+    values (#{tId,jdbcType=INTEGER}, #{tName,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.mymsg.entity.Teacher" >
+    insert into teacher
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="tId != null" >
+        tId,
+      </if>
+      <if test="tName != null" >
+        tName,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="tId != null" >
+        #{tId,jdbcType=INTEGER},
+      </if>
+      <if test="tName != null" >
+        #{tName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.mymsg.entity.Teacher" >
+    update teacher
+    <set >
+      <if test="tName != null" >
+        tName = #{tName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where tId = #{tId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.mymsg.entity.Teacher" >
+    update teacher
+    set tName = #{tName,jdbcType=VARCHAR}
+    where tId = #{tId,jdbcType=INTEGER}
+  </update>
+</mapper>

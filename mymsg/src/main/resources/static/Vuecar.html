@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div, ul, li {
+            margin: 0;
+            padding: 0
+        }
+
+        li {
+            float: left;
+            width: 100px;
+            height: 24px;
+            line-height: 24px;
+            list-style: none;
+            border: solid 1px;
+            text-align: center;
+        }
+
+        #cart {
+            width: 700px;
+            text-align: center;
+        }
+
+        .num input {
+            width: 30px;
+            text-align: center;
+        }
+
+        ul {
+            background-color: cornflowerblue;
+
+        }
+
+        /*ul:nth-child(0) {*/
+        /*background-color: aqua;*/
+        /*}*/
+
+        .num {
+            width: 150px;
+        }
+
+        #total {
+            clear: both;
+            text-align: right;
+            padding-right: 50px;
+            padding-top: 5px;
+        }
+
+        #total span {
+            color: red
+        }
+    </style>
+</head>
+<body>
+<input type="date">
+<div id="cart">
+    <ul>
+        <li><input name="all" type="checkbox" @click="allchose()">全选</li>
+        <li>产品名称</li>
+        <li>价格</li>
+        <li class="num">数量</li>
+        <li>合计</li>
+        <li>操作</li>
+    </ul>
+    <ul v-for="(produce,index) in produces">
+        <li><input name="one" type="checkbox"></li>
+        <li>{{produce.name}}</li>
+        <li>{{produce.price}}</li>
+        <li class="num">
+            <input type="button" value="-" @click="jian(index)">
+            <input name="num" type="text" value="1" v-model="produce.num">
+            <input type="button" value="+" @click="jia(index)">
+        </li>
+        <li>{{sumPrice(index)}}</li>
+        <li><span @click="deleteGoods(index)">删除</span></li>
+    </ul>
+
+    <div id="total">总价:<span>{{myPrice()}}</span></div>
+    <input name="add" type="button" value="添加" @click="addGoods">
+</div>
+
+</body>
+<script src="js/jquery-3.4.1.js"></script>
+<script src="js/vue.min.js"></script>
+<script>
+    var pro = ["电脑", "u盘", "充电器", "鼠标"];
+    var price = [10000, 23, 45, 65];
+    var vm=new Vue({
+        el:"#cart",
+        data:{
+            produces:[
+                {
+                    name:"手机",
+                    price:1000,
+                    num:1,
+                },
+                {
+                    name:"u盘",
+                    price:23,
+                    num:1,
+                }
+            ]
+
+        },
+        methods:{
+            jian:function(i){
+                if(this.produces[i].num > 0){
+                    this.produces[i].num--;
+                }
+            },
+            jia:function(i){
+              this.produces[i].num++;
+            },
+            addGoods:function(){
+                var i =Math.floor(Math.random()*4);
+                //判断是否重复
+                var flag = -1;
+                for(var j=0;j<this.produces.length;j++){
+                    if(this.produces[j].name == pro[i]){
+                        flag = j;
+                        break;
+                    }
+                }
+                if(flag == -1){
+                    this.produces.push({
+                        name:pro[i],
+                        price:price[i],
+                        num:1,
+                    })
+                } else {
+                    this.produces[j].num++;
+                }
+            },
+            sumPrice:function (i) {
+                return this.produces[i].price*this.produces[i].num;
+            },
+            deleteGoods:function (i) {
+                this.produces.splice(i,1);
+            },
+            myPrice:function () {
+                var sum=0;
+                for(var i = 0;i<this.produces.length;i++){
+                    if($("input[ name='one']").eq(i).prop("checked"))
+                        sum += this.produces[i].price*this.produces[i].num;
+                }
+                // for(var p in this.produces){
+                //     sum += p.price*p.num;
+                // }
+                return sum;
+            },
+            allchose:function(){
+                // alert($("input[ name='one']").eq(1).prop("checked"));
+                if($("input[name='all']").prop("checked")){
+                    $("input[name='one']").prop("checked",true);
+                }
+                //Vue 中方法中调用方法
+                // alert(this.myPrice());
+                $("#total span").text(this.myPrice());
+            },
+        }
+    })
+</script>
+</html>

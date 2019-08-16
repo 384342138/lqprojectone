@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+
+        .mydiv{
+            float: left;
+            width: 590px;
+            height: 470px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .myul{
+            width: 1770px;
+            height: 470px;
+            float: left;
+            overflow: hidden;
+            position: absolute;
+        }
+
+        .myli{
+            width: 590px;
+            height: 470px;
+            float: left;
+            overflow: hidden;
+            position: relative;
+            /*list-style: none;*/
+        }
+        #panel{
+            position: absolute;
+            width: 590px;
+            height: 470px;
+            border: 1px solid #0050D0;
+            background: #96E555;
+            cursor: pointer;
+        }
+    </style>
+    <script src="jq/jquery-3.4.1.js"></script>
+    <script>
+        $(function () {
+            var $Ul = $(".myul");
+            var fn = setInterval(autoScroll2, 1000);
+            $Ul.mouseover(function () {
+                clearInterval(fn);
+            }).mouseout(function () {
+                fn = setInterval(autoScroll2, 1000);
+            });
+            function autoScroll2() {
+                $Ul.stop().animate({ left: "-590px" }, 800, function () {
+                    $(this).css({ left: 0 }).find("li:first").appendTo(this);//ul向左移动150，把移出的li放到最后，ul复原。
+                });
+            }
+        });
+    </script>
+
+    <!--<script>-->
+        <!--$(function () {-->
+            <!--$(".panel").click(function () {-->
+                <!--$(this).animate({left: "+=1180px"},3000 ,function () {-->
+                        <!--$(this).css("left","0");-->
+                        <!--$(this).css("top","0");-->
+                    <!--})-->
+
+            <!--})-->
+            <!--// $("div").hover(function () {-->
+            <!--//     $(this).animate({left: "+=590px"},3000)-->
+            <!--// },function () {-->
+            <!--//     $(this).animate({left:"+=590px"},3000)-->
+            <!--//         ,function () {-->
+            <!--//         $(this).css("top","0");-->
+            <!--//         $(this).css("left","0");-->
+            <!--//     }-->
+            <!--// })-->
+        <!--})-->
+    <!--</script>-->
+</head>
+<body>
+
+<!--<div>-->
+    <!--<img src="images/test2.jpg">-->
+<!--</div>-->
+<!--<div>-->
+    <!--<img src="images/test1.jpg">-->
+<!--</div>-->
+<!--<div>-->
+    <!--<img src="images/test3.jpg">-->
+<!--</div>-->
+<!--<div class="panel">-->
+    <!--<img src="images/test3.jpg">-->
+<!--</div>-->
+<!--<div class="panel">-->
+    <!--<img src="images/test2.jpg">-->
+<!--</div>-->
+
+<div class="mydiv">
+    <ul class="myul">
+        <li class="myli">
+            <a class="img_b">
+                <img src="images/test2.jpg">
+            </a>
+        </li>
+        <li class="myli">
+            <a class="img_b">
+                <img src="images/test3.jpg">
+            </a>
+        </li>
+        <li class="myli">
+            <a class="img_b">
+                <img src="images/test1.jpg">
+            </a>
+        </li>
+    </ul>
+</div>
+
+</body>
+</html>

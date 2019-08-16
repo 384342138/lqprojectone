@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>userInFo</title>
+</head>
+<br>
+     <br>填写用户注册信息</br>
+
+<!--<iframe name="userinfo" src="user.html" width="600" height="400" frameborder="1" scrolling="no"></iframe>-->
+<form action="/login" method="post">
+    <table border="1">
+        <tr>
+            <td>用户名：</td>
+            <td>
+                <!--<form>-->
+                    <input name="userName" type="text" value="">
+                <!--</form>-->
+            </td>
+            <td>登录用户名</td>
+        </tr>
+        <tr>
+            <td>密码：</td>
+            <td>
+                <!--<form>-->
+                    <input name="passWord" type="password" value="">
+                <!--</form>-->
+            </td>
+            <td>登录密码，6个以上字母、数字组合，不区分大小写</td>
+        </tr>
+
+        <tr>
+            <td>注册邮箱：</td>
+            <td>
+                <!--<form>-->
+                    <input name="emial" type="email" value="">
+                <!--</form>-->
+            </td>
+            <td>录入后不可修改</td>
+        </tr>
+
+        <tr>
+            <td>性别：</td>
+            <td>
+                <!--<form>-->
+                    <input name="sex" type="radio" value="man">男
+                    <input name="sex" type="radio" value="woman">女
+                <!--</form>-->
+            </td>
+            <td>选择您的性别</td>
+        </tr>
+        <tr>
+            <td>出生年月：</td>
+            <td>
+                <!--<form>-->
+                <select name="year">
+                    <option value="1998">1998</option>
+                    <option value="1999">1999</option>
+                    <option value="2000">2000</option>
+                    <option value="2001">2001</option>
+                    <option value="2002">2002</option>
+                    <option value="2003">2003</option>
+                    <option value="2004">2004</option>
+                    <option value="2005">2005</option>
+                    <option value="2006">2006</option>
+                    <option value="2007">2007</option>
+                    <option value="2008">2008</option>
+                    <option value="2009">2009</option>
+                    <option value="2010">2010</option>
+                    <option value="2011">2011</option>
+                    <option value="2012">2012</option>
+                    <option value="2013">2013</option>
+                    <option value="2013">2013</option>
+                </select>
+                年
+                <select name="month">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                </select>
+                月
+<!--</form>-->
+</td>
+<td>选择您的出生年月</td>
+</tr>
+<tr>
+    <td>兴趣标签：</td>
+    <td>
+        <!--<form>-->
+            <input name="interest" type="checkbox" value="life">生活
+            <input name="interest" type="checkbox" value="plying">娱乐
+            <input name="interest" type="checkbox" value="gy">体育
+            <br></br>
+            <input name="interest" type="checkbox" value="money">财经
+            <input name="interest" type="checkbox" value="style">时尚
+            <input name="interest" type="checkbox" value="new">新闻
+        <!--</form>-->
+    </td>
+    <td>选择您感兴趣的标签</td>
+</tr>
+<tr>
+    <td>头像：</td>
+    <td>
+        <!--<form>-->
+            <input name="image" type="file">
+        <!--</form>-->
+    </td>
+    <td>选取您的图像文件</td>
+</tr>
+<tr>
+    <td>个人简介：</td>
+    <td>
+        <!--<form>-->
+            <textarea name="personinfo" rows="5" cols="20"></textarea>
+        <!--</form>-->
+    </td>
+    <td>
+        请添加您的个人简介情况,</br>
+        以便让朋友们更加了解您.
+    </td>
+</tr>
+</table>
+</form>
+
+</body>
+</html>

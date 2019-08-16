@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jq/jquery-3.4.1.js"></script>
+    <script>
+        $(function () {
+            $("input:button").click(function () {
+                var op=$(this).val();//获得操作符
+                switch(op){
+                    case "+":
+                        $("#result_num").val(parseFloat($("#first_num").val())+ parseFloat($("#second_num").val()));
+                        break;
+                    case "-":
+                        $("#result_num").val(parseFloat($("#first_num").val())-parseFloat($("#second_num").val()));
+                        break;
+                    case "*":
+                        $("#result_num").val(parseFloat($("#first_num").val())*parseFloat($("#second_num").val()));
+                        break;
+                    case "/":
+                        if($("#second_num").val()=="0"){
+                            $("#result_num").val("智商为0")
+                        } else {
+                            $("#result_num").val(parseFloat($("#first_num").val())/parseFloat($("#second_num").val()));
+                        }
+                        break;
+
+                }
+               // $("#result_num").val(parseFloat($("#first_num").val()) parseFloat($("#second_num").val()));
+            });
+        })
+        // function add(){
+        //     document.getElementById("result_num").value =parseFloat(document.getElementById("first_num").value ) +parseFloat(document.getElementById("second_num").value);
+        //
+        // }
+        // function sub() {
+        //     document.getElementById("result_num").value =parseFloat(document.getElementById("first_num").value ) -parseFloat(document.getElementById("second_num").value);
+        //
+        // }
+        // function mul() {
+        //     document.getElementById("result_num").value =parseFloat(document.getElementById("first_num").value ) *parseFloat(document.getElementById("second_num").value);
+        //
+        // }
+        // function dis() {
+        //     if (parseInt(document.getElementById("second_num").value) == 0){
+        //         document.getElementById("result_num").value="智商是0";
+        //     } else{
+        //         document.getElementById("result_num").value =parseFloat(document.getElementById("first_num").value ) /parseFloat(document.getElementById("second_num").value);
+        //
+        //     }
+        // }
+    </script>
+</head>
+<body>
+<input id="first_num"><br>
+<input id="second_num"><br>
+<!--<input type="button" value="+" onclick="add()">-->
+<!--<input type="button" value="-" onclick="sub()">-->
+<!--<input type="button" value="*" onclick="mul()">-->
+<!--<input type="button" value="/" onclick="dis()">-->
+<input type="button" value="+">
+<input type="button" value="-">
+<input  type="button" value="*">
+<input  type="button" value="/" >
+<input id="result_num"><br>
+
+</body>
+</html>

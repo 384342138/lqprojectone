@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/jquery-3.4.1.js"></script>
+    <script>
+        $(function () {
+            $.ajax({
+                url:"http://localhost:8080/get",
+                type:"post",
+                dataType:"json",
+                success:function (data) {
+                    for(var i = 0;i <data.length;i++){
+                        var $li = $("<li>"+data[i].userName+"</li>");
+                        $("ul").append($li);
+                    }
+                }
+            })
+        })
+    </script>
+</head>
+<body>
+<ul>
+    <li></li>
+</ul>
+</body>
+</html>
